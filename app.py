@@ -1,19 +1,22 @@
 import streamlit as st
+import random
 
-st.title("Малка програма с въпрос")
+st.title("🎯 Познай числото")
 
-name = st.text_input("Как се казваш?")
-age = st.number_input(
-    "На колко години си?",
-    min_value=0,
-    max_value=120,
+# тайно число
+secret = random.randint(1, 10)
+
+st.write("Мисля си за число от 1 до 10")
+
+guess = st.number_input(
+    "Твоето предположение:",
+    min_value=1,
+    max_value=10,
     step=1
 )
 
 if st.button("Провери"):
-    st.write("Здравей,", name)
-
-    if age >= 18:
-        st.success("Ти си пълнолетен.")
+    if guess == secret:
+        st.success("Браво! Позна!")
     else:
-        st.warning("Ти не си пълнолетен.")
+        st.error("Не позна 😢 Опитай пак")
